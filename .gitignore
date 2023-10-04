@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/BlazorAppWasAspEmpty/Server/Data/Dailly.txt
+/BlazorAppWasAspEmpty/Server/Data/Dailly.laccdb
+/BlazorAppWasAspEmpty/Server/Data/Dailly.accdb

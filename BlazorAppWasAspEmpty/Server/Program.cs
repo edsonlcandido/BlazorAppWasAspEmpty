@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +13,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
 }
+
 app.UseBlazorFrameworkFiles();
-app.UseStaticFiles();
+
+//default values to StaticFileOptions
+StaticFileOptions staticFileOptions = new StaticFileOptions();
+staticFileOptions.DefaultContentType = "none";
+staticFileOptions.ServeUnknownFileTypes = false;
+app.UseStaticFiles(staticFileOptions);
 
 app.UseRouting();
 

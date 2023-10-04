@@ -1,0 +1,12 @@
+﻿@page "/daily"
+@using BlazorAppWasAspEmpty.Shared.Models
+@inject HttpClient Http
+<h3>Daily</h3>
+
+@code {
+    private BlazorAppWasAspEmpty.Shared.Models.Daily[]? dailies;
+    protected override async Task  OnInitializedAsync()
+    {
+        dailies = await Http.GetFromJsonAsync<BlazorAppWasAspEmpty.Shared.Models.Daily[]>("daily/getall");
+    }
+}

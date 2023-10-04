@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Shared\BlazorAppWasAspEmpty.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\Dailly.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
