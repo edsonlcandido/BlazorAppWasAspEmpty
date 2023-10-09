@@ -3,10 +3,32 @@
 @inject HttpClient Http
 <h3>Daily</h3>
 
+@foreach (var daily in dailies)
+{
+    <p>@daily.Cliente</p>
+}
+<p>@mercado.clubes</p>
+
 @code {
     private BlazorAppWasAspEmpty.Shared.Models.Daily[]? dailies;
+    private Mercado mercado;
+    private string json;
+
     protected override async Task  OnInitializedAsync()
     {
-        dailies = await Http.GetFromJsonAsync<BlazorAppWasAspEmpty.Shared.Models.Daily[]>("daily/getall");
+        using var httpClient = new HttpClient();
+        //mercado = await httpClient.GetFromJsonAsync<Mercado>("https://cors.ehtudo.app/https://api.cartola.globo.com/atletas/mercado");
+
+
+        //mercado = await Http.GetStringAsync("api/daily/index");
+        dailies = await Http.GetFromJsonAsync<BlazorAppWasAspEmpty.Shared.Models.Daily[]>("api/daily/getall");
+    }
+
+    public class Mercado
+    {
+        public string atletas { get; set; }
+        public string clubes { get; set; }
+        public string posicoes { get; set; }
+        public string status { get; set; }
     }
 }

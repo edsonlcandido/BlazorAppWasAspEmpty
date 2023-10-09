@@ -4,7 +4,7 @@ namespace BlazorAppWasAspEmpty.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FolderController : Controller
+    public class FolderController : ControllerBase  
     {
         
         [HttpGet("open")]

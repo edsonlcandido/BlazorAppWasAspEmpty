@@ -3,13 +3,21 @@
 namespace BlazorAppWasAspEmpty.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DailyController : Controller
     {
-        [HttpGet("index")]
-        public string Get()
+        [HttpGet("index")]  
+        public async Task<string> Get()
         {
-            return "Hello from Daily controller";
+            //get JSON from the url https://cors.ehtudo.app/https://api.cartola.globo.com/atletas/mercado
+            
+
+
+            using var httpClient = new HttpClient();
+            var response = await httpClient.GetStringAsync("https://cors.ehtudo.app/https://api.cartola.globo.com/atletas/mercado");
+            //use response
+            
+            return response.ToString();
         }
         [HttpGet("getall")]
         public List<Shared.Models.Daily> GetAll()
